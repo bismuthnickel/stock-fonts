@@ -37,5 +37,5 @@ function createText() {
     var sel = document.getElementById("fonts")
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = "72px ".concat(sel.value);
-    ctx.fillText(tex.value, 0, 47);
+    ctx.fillText(tex.value, 0, 60);
 }
