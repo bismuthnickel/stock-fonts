@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stock Fonts Generator</title>
+        <link rel="stylesheet" href="https://bismuthnickel.github.io/stylesheet.css">
+    </head>
+    <body>
+        <input type="text" height="2" id="tex" placeholder="Preview Text">
+        <select id="fonts">
+            <option>Arial</option>
+            <option>Consolas</option>
+            <option>Courier New</option>
+            <option>Eurostile</option>
+            <option>Futura Medium</option>
+            <option>Microgramma</option>
+        </select>
+        <br>
+        <button onclick="createText()">Generate</button>
+        <br>
+        <p>To use, right click on text and save image.</p>
+        <br>
+        <canvas id="canvas"></canvas>
+    </body>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = screen.width;
+        canvas.height = screen.height;
+
+        var eurostile = new FontFace("eurostile","url(https://bismuthnickel.github.io/stock-fonts/eurostileextendedblack.otf)")
+        var microgramma = new FontFace("microgramma","url(https://bismuthnickel.github.io/stock-fonts/Microgramma.ttf)")
+        var futura = new FontFace("futura medium","url(https://bismuthnickel.github.io/stock-fonts/FuturaMedium.otf)")
+
+        eurostile.load().then(function(font){
+
+            // with canvas, if this is ommited won't work
+            document.fonts.add(font);
+            console.log('Font loaded');
+        
+        });
+
+        microgramma.load().then(function(font){
+
+            // with canvas, if this is ommited won't work
+            document.fonts.add(font);
+            console.log('Font loaded');
+        
+        });
+
+        futura.load().then(function(font){
+
+            // with canvas, if this is ommited won't work
+            document.fonts.add(font);
+            console.log('Font loaded');
+        
+        });
+
+        function createText() {
+            var tex = document.getElementById("tex")
+            var sel = document.getElementById("fonts")
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.font = "72px ".concat(sel.value);
+            ctx.fillText(tex.value, 0, 60);
+        }
+    </script>
+</html>
